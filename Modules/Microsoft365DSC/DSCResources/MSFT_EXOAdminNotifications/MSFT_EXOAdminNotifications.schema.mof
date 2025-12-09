@@ -1,0 +1,27 @@
+[ClassVersion("1.0.0.0"), FriendlyName("EXOAdminNotification")]
+class MSFT_EXOAdminNotifications : OMI_BaseResource
+{
+    [Key, Description("Unique name of the alert policy.")]
+    string Name;
+
+    [Write, Description("Specifies the credential to connect to Exchange Online.")]
+    string Credential;
+
+    [Write, Description("Category of the alert.")]
+    string Category;
+
+    [Write, Description("Severity of the alert.")]
+    string Severity;
+
+    [Write, Description("Whether the alert is disabled.")]
+    boolean Disabled;
+
+    [Write, Description("Whether the alert notifies the user.")]
+    boolean NotifyUser;
+
+    [Write, Description("Whether the alert notification is enabled.")]
+    boolean NotificationEnabled;
+
+    [Read, Description("Indicates whether the resource is Present or Absent.")]
+    string Ensure;
+};
