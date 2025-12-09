@@ -51,27 +51,21 @@ Contributors are encouraged to propose their contributions as pull requests to t
 This branch will periodically be merged to the master branch,
 and be released to [PowerShell Gallery](https://www.powershellgallery.com/).
 
-## How to Install
 
-To acquire the latest
-bits of the module from a machine that has internet connectivity,
-run the following PowerShell lines:
 
-```PowerShell
-Install-Module -Name Microsoft365DSC -Force
-Update-M365DSCModule
+## 📥 Clone This Repository
+
+### **Windows**
+```Powershell
+cd C:\
+git clone https://github.com/<your-username>/Microsoft365DSC.git
 ```
 
-## Telemetry Disclaimer
-
-Microsoft365DSC captures Telemetry data about the names of the resources
-in which a configuration drift has been detected, along with the type
-of exceptions being thrown by errors in the various modules. While no
-sensitive data is ever captured, App Insights, which performs
-telemetry analytics, captures information about the city
-where the telemetry entries were captured by default. Users can
-opt-out to prevent telemetry from being sent back to the Microsoft365DSC team
-by running the following command:
+Linux
+```Bash
+cd ~
+git clone https://github.com/<your-username>/Microsoft365DSC.git
+```
 
 ```PowerShell
 Set-M365DSCTelemetryOption -Enabled $False
