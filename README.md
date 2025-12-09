@@ -67,6 +67,64 @@ cd ~
 git clone https://github.com/<your-username>/Microsoft365DSC.git
 ```
 
-```PowerShell
-Set-M365DSCTelemetryOption -Enabled $False
+## Install Required PowerShell Modules (Windows & Linux)
+
+
+## Install All Dependancies
+```
+Install-PackageProvider -Name NuGet -Force
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+Install-Module Microsoft.Graph.Authentication `
+    -RequiredVersion 2.28.0 `
+    -Scope CurrentUser `
+    -Force -AllowClobber
+
+Install-Module ReverseDSC -Scope CurrentUser -Force -AllowClobber
+
+Import-Module ReverseDSC -Force
+# Graph v2.28.0 (brings Identity.DirectoryManagement, Users, Groups, Applications, etc.)
+Install-Module Microsoft.Graph -RequiredVersion 2.28.0 -Scope CurrentUser -Force -AllowClobber
+
+# Graph Beta v2.28.0 (brings Microsoft.Graph.Beta.Search, Beta.Identity.DirectoryManagement, etc.)
+Install-Module Microsoft.Graph.Beta -RequiredVersion 2.28.0 -Scope CurrentUser -Force -AllowClobber
+
+# Exchange Online
+Install-Module ExchangeOnlineManagement -RequiredVersion 3.9.0 -Scope CurrentUser -Force -AllowClobber
+
+# Cloud login helper (Get-MSCloudLoginConnectionProfile, etc.)
+Install-Module MSCloudLoginAssistant -RequiredVersion 1.1.56 -Scope CurrentUser -Force -AllowClobber
+
+# ReverseDSC (for Save-Credentials and related helpers)
+Install-Module ReverseDSC -Scope CurrentUser -Force -AllowClobber
+
+Update-M365DSCDependencies -Scope AllUsers -Force
+
+```
+## Import the module
+```
+# Path to the module’s .psd1 file inside the repo
+$repoRoot   = "C:\Microsoft365DSC"                 # change if you cloned elsewhere
+$moduleRoot = Join-Path $repoRoot "Modules\Microsoft365DSC"
+$moduleFile = Join-Path $moduleRoot "Microsoft365DSC.psd1"
+
+Import-Module $moduleFile -Force
+Import-Module ReverseDSC -Force
+Import-Module MSCloudLoginAssistant -Force
+
+
+```
+## Check that it's loaded
+```
+Get-Module Microsoft365DSC
+```
+### Add Custom Resource folder under DSCResources folder (Follow the naming convention) and create psm1 and schema.mof files
+## Export Resources
+```
+# Get credentials
+$cred = Get-CredentialExport-M365DSCConfiguration ` 
+    -Credential $cred `
+    -Components@("#add names of resources you need to export") ` 
+    -Mode Full `
+    -Path "#add here the output path" ` 
+    -FileName "#add here the desired name of the output ps1 file"
 ```
