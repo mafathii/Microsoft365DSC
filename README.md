@@ -117,8 +117,15 @@ Import-Module MSCloudLoginAssistant -Force
 ```
 Get-Module Microsoft365DSC
 ```
-## Add Custom Resource folder under DSCResources folder - Follow the naming convention 
+## Add Custom Resource folder under DSCResources folder - Follow the naming convention MSFT_<ResourceClassName>
 ### Create .psm1 and schema.mof files inside this folder
+### MSFT_<ResourceClassName>.psm1
+```
+```
+### MSFT_<ResourceClassName>.schema.mof
+```
+```
+
 ## Export Resources
 ```
 # Get credentials
