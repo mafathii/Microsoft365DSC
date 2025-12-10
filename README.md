@@ -346,6 +346,16 @@ Export-ModuleMember -Function *-TargetResource
 ```
 ### MSFT_<ResourceClassName>.schema.mof
 ```
+[ClassVersion("1.0.0.0"), FriendlyName("<ResourceClassName>")]
+class MSFT_<ResourceClassName> : OMI_BaseResource
+{
+    [Key, Description("")]
+    string <Attribute1>;
+
+    [Write, Description("")]
+    type <Attribute2>;
+ 
+};
 ```
 
 ## Export Resources
