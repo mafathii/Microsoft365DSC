@@ -122,7 +122,8 @@ Get-Module Microsoft365DSC
 ## Export Resources
 ```
 # Get credentials
-$cred = Get-CredentialExport-M365DSCConfiguration ` 
+$cred = Get-Credential
+Export-M365DSCConfiguration ` 
     -Credential $cred `
     -Components@("#add names of resources you need to export") ` 
     -Mode Full `
